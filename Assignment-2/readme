@@ -1,0 +1,36 @@
+
+DISK ON RAM BLOCK DEVICE DRIVER
+
+
+1. Compile the code using following command
+ 
+   make all
+
+2. Insert the block device driver using following command
+
+   sudo insmod main.ko
+
+3. Type lsmod to view the module main
+
+4. View the partitions using following command
+    
+    ls -l /dev/disk_on_ram* or sudo fdisk -l
+
+5. Run the following commands to demonstrate disk dump utility
+    
+    dd if=/dev/disk_on_ram of=dor
+    ls -l dor
+    dd if=/dev/zero of=/dev/disk_on_ram1 count=1
+
+6. Type sudo -s to give permissions and then perform the following read / write operation 
+
+7. We can write into the block device using following command
+
+    cat > /dev/disk_on_ram1 
+
+8. We can read the block device content using following command
+
+    xxd /dev/disk_on_ram1 | less
+
+9. Remove the block device driver using following command
+   sudo rmmod main
